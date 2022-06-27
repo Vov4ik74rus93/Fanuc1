@@ -4,6 +4,7 @@ public class Block {
     private final Tool tool;
     private final Blank blank;
     private int numberOfTool = 0;
+    private final String END_OF_BLOCK = "G0Z2.;\nM9;\nG28U0.W0.M05;\nM01;\n";
 
     public Block(Tool tool, Blank blank) {
         this.tool = tool;
@@ -18,9 +19,10 @@ public class Block {
                 tool.getG97(), blank.getD()+2));
         sb.append(String.format("G50 S%d;\nG96 S%d;\n",
                 tool.getG50(), tool.getG96()));
-        for (int i = 0; i < coordinates.size(); i = i + 2) {
+        for (int i = 0; i < coordinates.size(); i++) {
             sb.append(String.format("G1 X%d. Z%d.;\n", coordinates.get(i).getX(), coordinates.get(i).getY()));
         }
+        sb.append(END_OF_BLOCK);
         return sb.toString();
     }
 
