@@ -1,6 +1,7 @@
 public class Blank {
-    private int l;
-    private int d;
+    // Заготовка
+    private final int l;
+    private final int d;
 
     public Blank(int l, int d) {
         this.l = l;

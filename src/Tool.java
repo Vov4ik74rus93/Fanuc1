@@ -1,10 +1,12 @@
 public class Tool {
-    private NameOfTool name;
+    // Все режимы усредненные без учета ньюансов обработки, металла, зажима и прочего
+    private final NameOfTool name;
     private double u;
     private int g97;
     private int g50;
     private int g96;
     private double f;
+    private boolean isInner;
 
     public Tool(NameOfTool name) {
         this.name = name;
@@ -57,4 +59,9 @@ public class Tool {
     public String getName() {
         return name.name();
     }
+
+    public boolean isInner() {
+        return isInner;
+    }
+
 }
