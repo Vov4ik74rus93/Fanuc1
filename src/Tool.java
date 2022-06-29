@@ -1,61 +1,59 @@
 public class Tool {
     // Все режимы усредненные без учета ньюансов обработки, металла, зажима и прочего
     private final NameOfTool name;
-    private double u;
-    private int g97;
-    private int g50;
-    private int g96;
-    private double f;
+    private double takeoff;
+    private int constSpeed;
+    private int maxSpeed;
+    private int cuttingSpeed;
+    private double supply;
     private boolean isInner;
 
     public Tool(NameOfTool name) {
         this.name = name;
         switch (name) {
-            case PROHODNOY -> {
-                u = 2;
-                g97 = 500;
-                g50 = 1800;
-                g96 = 180;
-                f = 0.2;
+            case PROHODNOY:
+                setParameters(2, 500, 1800, 200, 0.2, false);
                 break;
-            }
-            case KONTURNIY -> {
-                u = 1.5;
-                g97 = 500;
-                g50 = 2000;
-                g96 = 220;
-                f = 0.16;
+            case KONTURNIY:
+                setParameters(2, 500, 2000, 220, 0.16, false);
                 break;
-            }
-            case REZBOVOY -> {
-                u = 2;
-                g97 = 500;
-                g50 = 1800;
-                g96 = 180;
+            case REZBOVOY:
+                setParameters(0.1, 600, 0, 0, 2., false);
                 break;
-            }
         }
     }
 
-    public double getU() {
-        return u;
+    private void setParameters(double takeoff, int constTurn, int maxSpeed,
+                               int cuttingSpeed, double supply, boolean isInner) {
+        this.takeoff = takeoff;
+        this.constSpeed = constTurn;
+        this.maxSpeed = maxSpeed;
+        this.cuttingSpeed = cuttingSpeed;
+        this.supply = supply;
+        this.isInner = isInner;
     }
 
-    public int getG97() {
-        return g97;
+
+    public double getTakeoff() {
+        return takeoff;
     }
 
-    public int getG50() {
-        return g50;
+    public int getConstSpeed() {
+        return constSpeed;
     }
 
-    public int getG96() {
-        return g96;
+    public int getMaxSpeed() {
+        return maxSpeed;
     }
 
-    public double getF() {
-        return f;
+    public int getCuttingSpeed() {
+        return cuttingSpeed;
     }
+
+    public double getSupply() {
+        return supply;
+    }
+
     public String getName() {
         return name.name();
     }
@@ -64,4 +62,12 @@ public class Tool {
         return isInner;
     }
 
+}
+
+
+enum NameOfTool {
+    // Здесь будет перечисление всех использующихся видов резцов
+    PROHODNOY,
+    KONTURNIY,
+    REZBOVOY
 }

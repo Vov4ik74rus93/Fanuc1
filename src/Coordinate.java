@@ -1,17 +1,17 @@
 public class Coordinate {
     private final int x;
-    private final int y;
+    private final int z;
 
     public int getX() {
         return x;
     }
 
-    public int getY() {
-        return y;
+    public int getZ() {
+        return z;
     }
 
-    public Coordinate(int x, int y) {
+    public Coordinate(int x, int z) {
         this.x = x;
-        this.y = y;
+        this.z = z;
     }
 }
